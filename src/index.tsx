@@ -1,5 +1,25 @@
 import React from "react";
 import ReactDom from "react-dom";
-import App from "./components/App";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
 
-ReactDom.render(<App />, document.querySelector("#root"))
+import App from "./components/App";
+import ErrorBoundary from "./components/ErrorBoundary";
+import BookstoreService from "./services/BookstoreService";
+import { BookstoreServiceProvider } from "./components/BookstoreServiceContext";
+
+import store from "./store"
+
+const bookstoreService = new BookstoreService()
+
+ReactDom.render(
+    <Provider store={store}>
+        <ErrorBoundary>
+            <BookstoreServiceProvider value={bookstoreService}>
+                <Router>
+                    <App />
+                </Router>
+            </BookstoreServiceProvider>
+        </ErrorBoundary>    
+    </Provider>
+, document.querySelector("#root"))

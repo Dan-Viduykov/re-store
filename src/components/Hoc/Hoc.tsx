@@ -1,5 +1,5 @@
 import React from "react";
-import BookstoreService from "../../services/bookstore-service/bookstore-service";
+import BookstoreService from "../../services/BookstoreService";
 import { BookstoreServiceConsumer } from "../BookstoreServiceContext/BookstoreServiceContext";
 
 export const WithBooksroreService = () => <T extends BookstoreService>(Wrapped: React.ComponentType<T>) => {
