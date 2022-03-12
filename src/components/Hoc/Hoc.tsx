@@ -1,8 +1,8 @@
 import React from "react";
-import BookstoreService from "../../services/BookstoreService";
+import BookstoreService from "../../core/services/BookstoreService";
 import { BookstoreServiceConsumer } from "../BookstoreServiceContext/BookstoreServiceContext";
 
-export const WithBooksroreService = () => <T extends BookstoreService>(Wrapped: React.ComponentType<T>) => {
+export const WithBooksroreService = () => <T extends BookstoreService>(Wrapped: React.FC<T>) => {
     return (props: Pick<T, Exclude<keyof T, keyof BookstoreService>>) => {
         return (
             <BookstoreServiceConsumer>
