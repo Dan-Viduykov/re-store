@@ -5,14 +5,16 @@ import { HomePage, CartPage } from "../../Pages";
 
 const App: React.FC = () => {
     return (
-        <Routes>
-            <Route
-                path="/"
-                element={<HomePage />} />
-            <Route
-                path="/cart"
-                element={<CartPage />} />
-        </Routes>
+        <main className="container" role="main">
+            <Routes>
+                <Route
+                    path="/"
+                    element={<HomePage />} />
+                <Route
+                    path="/cart"
+                    element={<CartPage />} />
+            </Routes>
+        </main>
     )
 }
 
