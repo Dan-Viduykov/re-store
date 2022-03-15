@@ -9,6 +9,8 @@ import BookstoreService from "./core/services/BookstoreService";
 import { BookstoreServiceProvider } from "./components/BookstoreServiceContext";
 
 import store from "./core/store/store";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "https://fonts.googleapis.com/css?family=Playfair+Display:700";
 
 const bookstoreService = new BookstoreService()
 
