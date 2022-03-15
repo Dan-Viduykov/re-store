@@ -1,10 +1,19 @@
 import React from "react";
 import './App.css'
-import { WithBooksroreService } from "../Hoc";
+import { Route, Routes } from "react-router-dom";
+import { HomePage, CartPage } from "../../Pages";
 
-const App: React.FC = ({ bookstoreService }: any) => {
-    console.log(bookstoreService.getBooks());
-    return <div> App </div>
+const App: React.FC = () => {
+    return (
+        <Routes>
+            <Route
+                path="/"
+                element={<HomePage />} />
+            <Route
+                path="/cart"
+                element={<CartPage />} />
+        </Routes>
+    )
 }
 
-export default WithBooksroreService()(App);
+export default App;

@@ -1,8 +1,8 @@
-import { IBook } from "../../types";
+import { IBook } from "../../types/appReducer"
 
 export default class BookstoreService {
     getBooks(): IBook[] {
-        return[
+        return [
             {
                 id: 1,
                 title: 'Production-Ready Microservices',
