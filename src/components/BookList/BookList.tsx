@@ -23,10 +23,10 @@ const BookList: React.FC<BookListProps> = (props) => {
     }, [])
 
     return (
-        <ul>{
+        <ul className="book-list">{
             books.map((book) => {
                 return (
-                    <li key={book.id}><BookListItem book={book} /></li>
+                    <li className="book-list_item" key={book.id}><BookListItem book={book} /></li>
                 )
             })
         }</ul>    
