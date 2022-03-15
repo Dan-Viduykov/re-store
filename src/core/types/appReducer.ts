@@ -1,7 +1,9 @@
 interface IBook {
     id: number,
     title: string,
-    author: string
+    author: string,
+    price: number,
+    coverImage: string
 }
 
 interface AppState {
