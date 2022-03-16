@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./ShopHeader.css"
 
 interface ShopHeaderProps {
@@ -9,11 +10,15 @@ interface ShopHeaderProps {
 const ShopHeader: React.FC<ShopHeaderProps> = ({ numItems, total }) => {
     return (
         <header className="header">
-            <a className="header__logo text-dark" href="#">ReStore</a>
-            <a className="header__cart" href="#">
-                <i className="header__icon bi bi-cart-fill"></i>
-                {numItems} items (${total})
-            </a>
+            <Link to="/">
+                <div className="header__logo text-dark" >ReStore</div>
+            </Link>
+            <Link to="/cart">
+                <div className="header__cart" >
+                    <i className="header__icon bi bi-cart-fill" />
+                    {numItems} items (${total})
+                </div>
+            </Link>
         </header>
     )
 }

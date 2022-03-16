@@ -8,6 +8,7 @@ interface IBook {
 
 interface AppState {
     books: IBook[];
+    loading: boolean;
 }
 
 export enum AppActionsTypes {

@@ -1,7 +1,8 @@
 import { AppActions, AppActionsTypes, AppState } from "../../types/appReducer";
 
 const initialState: AppState = {
-    books: []
+    books: [],
+    loading: true
 }
 
 export const appReducer = (state = initialState, action: AppActions) => {
@@ -9,7 +10,8 @@ export const appReducer = (state = initialState, action: AppActions) => {
     switch (action.type) {
         case AppActionsTypes.BOOKS_LOADED:
             return {
-                books: action.payload
+                books: action.payload,
+                loading: false
             }
 
         default:
