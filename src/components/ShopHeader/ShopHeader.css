@@ -1,0 +1,25 @@
+.header {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__logo {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 2.5rem;
+    padding-left: 1rem;
+}
+
+.header__cart{
+    padding-right: 1rem;
+    align-self: center;
+    font-size: 1.3rem;
+    color: inherit;
+}
+
+.header__icon {
+    font-size: 1.7rem;
+    color: cadetblue;
+    margin-right: 10px;
+}

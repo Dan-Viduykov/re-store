@@ -9,7 +9,6 @@ import BookstoreService from "./core/services/BookstoreService";
 import { BookstoreServiceProvider } from "./components/BookstoreServiceContext";
 
 import store from "./core/store/store";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const bookstoreService = new BookstoreService()
 
