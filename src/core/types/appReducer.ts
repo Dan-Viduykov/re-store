@@ -13,6 +13,7 @@ interface AppState {
 
 export enum AppActionsTypes {
     BOOKS_LOADED = "BOOKS_LOADED",
+    BOOKS_REQUESTED = "BOOKS_REQUESTED"
 }
 
 interface ActionBooksLoaded {
@@ -20,7 +21,11 @@ interface ActionBooksLoaded {
     payload?: any
 }
 
-type AppActions = ActionBooksLoaded
+interface ActionBooksRequested {
+    type: AppActionsTypes.BOOKS_REQUESTED;
+}
+
+type AppActions = ActionBooksLoaded | ActionBooksRequested
 
 export type {
     IBook,

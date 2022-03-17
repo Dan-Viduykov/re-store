@@ -8,11 +8,16 @@ const initialState: AppState = {
 export const appReducer = (state = initialState, action: AppActions) => {
 
     switch (action.type) {
+        case AppActionsTypes.BOOKS_REQUESTED:
+            return {
+                books: [],
+                loading: true
+            };
         case AppActionsTypes.BOOKS_LOADED:
             return {
                 books: action.payload,
                 loading: false
-            }
+            };
 
         default:
             return state;

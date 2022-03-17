@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import './BookList.css'
 import BookListItem from "../BookListItem";
 import { AppState } from "../../core/types/appReducer";
-import { booksLoaded } from "../../core/store/actions";
+import { booksLoaded, booksRequested } from "../../core/store/actions";
 import { connect } from "react-redux"
 import { WithBooksroreService } from "../Hoc" 
 import { compose } from "../../core/utils"
@@ -11,12 +11,14 @@ import Spinner from "../Spinner";
 interface BookListProps extends AppState {
     bookstoreService: any;
     booksLoaded: any;
+    booksRequested: any;
 }
 
 const BookList: React.FC<BookListProps> = (props) => {
-    const { books, loading, bookstoreService, booksLoaded } = props;
+    const { books, loading, bookstoreService, booksLoaded, booksRequested } = props;
     
     useEffect(() => {
+        booksRequested();
         bookstoreService.getBooks().then(booksLoaded)
     }, [])
 
@@ -24,7 +26,7 @@ const BookList: React.FC<BookListProps> = (props) => {
 
     return (
         <ul className="book-list">{
-            books.map((book) => {
+            books?.map((book) => {
                 return (
                     <li className="book-list_item" key={book.id}><BookListItem book={book} /></li>
                 )
@@ -38,7 +40,8 @@ const mapStateToProps = ({ books, loading }: AppState) => {
 }
 
 const mapDispatchToProps = {
-    booksLoaded
+    booksLoaded,
+    booksRequested
 }
 
 export default compose(
