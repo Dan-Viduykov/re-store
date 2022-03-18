@@ -1,19 +1,27 @@
-import { IBook } from "../../types/appReducer"
+import { IBook, AppActionsTypes } from "../../types/appReducer"
 
 const booksLoaded = (newBooks: IBook[]) => {
     return {
-        type: 'BOOKS_LOADED',
+        type: AppActionsTypes.BOOKS_LOADED,
         payload: newBooks
     }
 }
 
 const booksRequested = () => {
     return {
-        type: 'BOOKS_REQUESTED'
+        type: AppActionsTypes.BOOKS_REQUESTED
+    }
+}
+
+const booksError = (error: Error) => {
+    return {
+        type: AppActionsTypes.BOOKS_ERROR,
+        payload: error
     }
 }
 
 export {
     booksLoaded,
-    booksRequested
+    booksRequested,
+    booksError
 }
