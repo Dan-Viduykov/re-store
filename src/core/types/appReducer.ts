@@ -13,22 +13,22 @@ interface AppState {
 }
 
 export enum AppActionsTypes {
-    BOOKS_LOADED = "BOOKS_LOADED",
-    BOOKS_REQUESTED = "BOOKS_REQUESTED",
-    BOOKS_ERROR = "BOOKS_ERROR"
+    FETCH_BOOKS_REQUEST = "FETCH_BOOKS_REQUEST",
+    FETCH_BOOKS_SUCCESS = "FETCH_BOOKS_SUCCESS",
+    FETCH_BOOKS_FAILURE = "FETCH_BOOKS_FAILURE"
 }
 
 interface ActionBooksLoaded {
-    type: AppActionsTypes.BOOKS_LOADED;
+    type: AppActionsTypes.FETCH_BOOKS_SUCCESS;
     payload?: any
 }
 
 interface ActionBooksRequested {
-    type: AppActionsTypes.BOOKS_REQUESTED;
+    type: AppActionsTypes.FETCH_BOOKS_REQUEST;
 }
 
 interface ActionBooksError {
-    type: AppActionsTypes.BOOKS_ERROR;
+    type: AppActionsTypes.FETCH_BOOKS_FAILURE;
     payload?: any
 }
 

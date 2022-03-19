@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { Dispatch, useEffect } from "react";
 import './BookList.css'
 import BookListItem from "../BookListItem";
-import { AppState } from "../../core/types/appReducer";
-import { booksLoaded, booksRequested, booksError } from "../../core/store/actions";
+import { AppActions, AppState } from "../../core/types/appReducer";
+import { fetchBooks } from "../../core/store/actions";
 import { connect } from "react-redux"
 import { WithBooksroreService } from "../Hoc" 
 import { compose } from "../../core/utils"
@@ -10,20 +10,14 @@ import Spinner from "../Spinner";
 import ErrorIndicator from "../ErrorIndicator";
 
 interface BookListProps extends AppState {
-    bookstoreService: any;
-    booksLoaded: any;
-    booksRequested: any;
-    booksError: any;
+    fetchBooks: any;
 }
 
 const BookList: React.FC<BookListProps> = (props) => {
-    const { books, loading, error, bookstoreService, booksLoaded, booksRequested, booksError } = props;
+    const { books, loading, error, fetchBooks } = props;
     
     useEffect(() => {
-        booksRequested();
-        bookstoreService.getBooks()
-            .then(booksLoaded)
-            .catch(booksError)
+        fetchBooks();
     }, [])
 
     if (loading) return <Spinner /> 
@@ -44,10 +38,11 @@ const mapStateToProps = ({ books, loading, error }: AppState) => {
     return { books, loading, error }
 }
 
-const mapDispatchToProps = {
-    booksLoaded,
-    booksRequested,
-    booksError
+const mapDispatchToProps = (dispatch: Dispatch<AppActions>, ownProps: any) => {
+    const { bookstoreService } = ownProps;
+    return {
+        fetchBooks: fetchBooks(bookstoreService, dispatch)
+    }
 }
 
 export default compose(

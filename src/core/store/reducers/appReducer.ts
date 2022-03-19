@@ -9,19 +9,19 @@ const initialState: AppState = {
 export const appReducer = (state = initialState, action: AppActions) => {
 
     switch (action.type) {
-        case AppActionsTypes.BOOKS_REQUESTED:
+        case AppActionsTypes.FETCH_BOOKS_REQUEST:
             return {
                 books: [],
                 loading: true,
                 error: null
             };
-        case AppActionsTypes.BOOKS_LOADED:
+        case AppActionsTypes.FETCH_BOOKS_SUCCESS:
             return {
                 books: action.payload,
                 loading: false,
                 error: null
             };
-        case AppActionsTypes.BOOKS_ERROR:
+        case AppActionsTypes.FETCH_BOOKS_FAILURE:
             return {
                 books: [],
                 loading: false,
