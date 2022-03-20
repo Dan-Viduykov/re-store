@@ -6,10 +6,19 @@ interface IBook {
     coverImage: string
 }
 
+interface ICartItem {
+    id: number,
+    name: string,
+    count: number,
+    total: number
+}
+
 interface AppState {
     books: IBook[];
     loading: boolean;
     error: Error | null;
+    cartItems: ICartItem[];
+    orderTotal: number
 }
 
 export enum AppActionsTypes {
