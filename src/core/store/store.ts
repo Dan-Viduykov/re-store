@@ -1,6 +1,9 @@
-import { applyMiddleware, createStore } from 'redux'
-import { appReducer } from './reducers/appReducer';
+import { applyMiddleware, combineReducers, createStore } from 'redux'
+import appReducer from './reducers/appReducer';
 
-const store = createStore(appReducer, applyMiddleware());
+const rootReducer = combineReducers({
+    appState: appReducer
+})
 
+const store = createStore(rootReducer, applyMiddleware());
 export default store

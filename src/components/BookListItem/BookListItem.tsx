@@ -3,10 +3,11 @@ import { IBook } from "../../core/types/appReducer";
 import './BookListItem.css'
 
 interface BookListItemProps {
-    book: IBook
+    book: IBook;
+    onAddedToCart: () => void
 }
 
-const BookListItem: React.FC<BookListItemProps> = ({ book }) => {
+const BookListItem: React.FC<BookListItemProps> = ({ book, onAddedToCart }) => {
     const { title, author, price, coverImage } = book;
 
     return (
@@ -19,7 +20,11 @@ const BookListItem: React.FC<BookListItemProps> = ({ book }) => {
                 <h4 className="book-title">{title}</h4>
                 <h4 className="book-author">{author}</h4>
                 <h4 className="book-price">{price}</h4>
-                <button className="book_btn-add btn btn-info">Add to cart</button>
+                <button
+                    onClick={onAddedToCart}
+                    className="book_btn-add btn btn-info">
+                    Add to cart
+                </button>
             </div>
         </div>
     )

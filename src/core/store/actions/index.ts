@@ -1,6 +1,6 @@
 import { Dispatch } from 'react';
 import BookstoreService from '../../services/BookstoreService';
-import { IBook, AppActionsTypes, AppActions } from "../../types/appReducer"
+import { IBook, AppActionsTypes } from "../../types/appReducer"
 
 const booksLoaded = (newBooks: IBook[]) => {
     return {
@@ -22,7 +22,14 @@ const booksError = (error: Error) => {
     }
 }
 
-const fetchBooks = (bookstoreService: BookstoreService, dispatch: Dispatch<AppActions>) => () => {
+export const bookAddedToCart = (bookId: number) => {
+    return {
+        type: AppActionsTypes.BOOK_ADDED_TO_CART,
+        payload: bookId
+    }
+}
+
+const fetchBooks = (bookstoreService: BookstoreService, dispatch: Dispatch<any>) => () => {
     dispatch(booksRequested());
     bookstoreService.getBooks()
         .then((data: IBook[]) => dispatch(booksLoaded(data)))

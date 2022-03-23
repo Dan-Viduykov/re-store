@@ -57,7 +57,7 @@ const ShoppingCartTable: React.FC<ShoppingCartTableProps> = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    { items.map(renderRow) }
+                    { items?.map(renderRow) }
                 </tbody>
             </table>
             <div className="shopping-cart-table__total">Total: ${total}</div>
