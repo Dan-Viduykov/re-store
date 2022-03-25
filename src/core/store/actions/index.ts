@@ -1,6 +1,6 @@
 import { Dispatch } from 'react';
 import BookstoreService from '../../services/BookstoreService';
-import { IBook, AppActionsTypes, AppActions } from "../../types/appReducer"
+import { IBook, AppActionsTypes } from "../../types/appReducer"
 
 const booksLoaded = (newBooks: IBook[]) => {
     return {
@@ -25,6 +25,19 @@ const booksError = (error: Error) => {
 export const bookAddedToCart = (bookId: number) => {
     return {
         type: AppActionsTypes.BOOK_ADDED_TO_CART,
+        payload: bookId
+    }
+}
+
+export const bookRemovedFromCart = (bookId: number) => {
+    return {
+        type: AppActionsTypes.BOOK_REMOVED_FROM_CART,
+        payload: bookId
+    }
+}
+export const allBookRemovedFromCart = (bookId: number) => {
+    return {
+        type: AppActionsTypes.ALL_BOOKS_REMOVED_FROM_CART,
         payload: bookId
     }
 }

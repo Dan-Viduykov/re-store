@@ -26,6 +26,8 @@ export enum AppActionsTypes {
     FETCH_BOOKS_SUCCESS = "FETCH_BOOKS_SUCCESS",
     FETCH_BOOKS_FAILURE = "FETCH_BOOKS_FAILURE",
     BOOK_ADDED_TO_CART = "BOOK_ADDED_TO_CART",
+    BOOK_REMOVED_FROM_CART = "BOOK_REMOVED_FROM_CART",
+    ALL_BOOKS_REMOVED_FROM_CART = "ALL_BOOKS_REMOVED_FROM_CART",
 }
 
 interface ActionBooksLoaded {
@@ -47,7 +49,22 @@ interface ActionBookAddedToCart {
     payload?: number
 }
 
-type AppActions = ActionBooksLoaded | ActionBooksRequested | ActionBooksError | ActionBookAddedToCart;
+interface ActionBookRemovedFromCart {
+    type: AppActionsTypes.BOOK_REMOVED_FROM_CART;
+    payload?: number
+}
+
+interface ActionAllBooksRemovedFromCart {
+    type: AppActionsTypes.ALL_BOOKS_REMOVED_FROM_CART;
+    payload?: number
+}
+
+type AppActions = ActionBooksLoaded
+                | ActionBooksRequested
+                | ActionBooksError
+                | ActionBookAddedToCart
+                | ActionBookRemovedFromCart
+                | ActionAllBooksRemovedFromCart;
 
 export type {
     IBook,

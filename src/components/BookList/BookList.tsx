@@ -16,6 +16,7 @@ interface BookListProps {
 }
 
 const BookList: FC<BookListProps> = ({ books, onAddedToCart }) => {
+    console.log(books);
     return (
         <ul className="book-list">
             {
@@ -35,7 +36,7 @@ const BookList: FC<BookListProps> = ({ books, onAddedToCart }) => {
 } 
 
 interface BookListContainerProps extends AppState {
-    fetchBooks: any;
+    fetchBooks: () => void;
     onAddedToCart: () => void
 }
 
@@ -44,7 +45,7 @@ const BookListContainer: FC<BookListContainerProps> = (props) => {
     
     useEffect(() => {
         fetchBooks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (loading) return <Spinner /> 
@@ -62,7 +63,8 @@ interface OwnProps {
     bookAddedToCart: (id: number) => any;
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<AppActions>, { bookstoreService, bookAddedToCart }: OwnProps) => {
+const mapDispatchToProps = (dispatch: Dispatch<AppActions>, ownProps: OwnProps) => {
+    const { bookstoreService, bookAddedToCart } = ownProps;
     return {
         fetchBooks: fetchBooks(bookstoreService, dispatch),
         onAddedToCart: (id: number) => dispatch(bookAddedToCart(id))

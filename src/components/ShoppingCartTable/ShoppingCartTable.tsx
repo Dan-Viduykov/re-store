@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import React from "react";
 import { AppState, ICartItem } from "../../core/types/appReducer";
 import './ShoppingCartTable.css'
+import { allBookRemovedFromCart, bookAddedToCart, bookRemovedFromCart } from "../../core/store/actions";
 
 interface ShoppingCartTableProps {
     items: ICartItem[];
@@ -76,17 +77,9 @@ const mapStateToProps = (state: AppState) => {
 
 const mapDispatchToProps = () => {
     return {
-        onIncrease: (id: number) => {
-            console.log('onIncrease', id);
-        },
-
-        onDecrease: (id: number) => {
-            console.log('onDecrease', id);
-        },
-
-        onDelete: (id: number) => {
-            console.log('onDelete', id);
-        }
+        onIncrease: (id: number) => bookAddedToCart,
+        onDecrease: (id: number) => bookRemovedFromCart,
+        onDelete: (id: number) => allBookRemovedFromCart,
     }
 }
 
