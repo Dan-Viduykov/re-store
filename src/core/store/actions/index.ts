@@ -1,6 +1,6 @@
 import { Dispatch } from 'react';
 import BookstoreService from '../../services/BookstoreService';
-import { IBook, AppActionsTypes } from "../../types/appReducer"
+import { IBook, AppActionsTypes, AppActions } from "../../types/appReducer"
 
 const booksLoaded = (newBooks: IBook[]) => {
     return {

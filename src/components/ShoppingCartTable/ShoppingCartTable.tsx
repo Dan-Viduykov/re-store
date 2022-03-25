@@ -1,25 +1,25 @@
 import { connect } from "react-redux";
 import React from "react";
-import { AppState } from "../../core/types/appReducer";
+import { AppState, ICartItem } from "../../core/types/appReducer";
 import './ShoppingCartTable.css'
 
 interface ShoppingCartTableProps {
-    items: any[]
-    total: any
-    onIncrease: any
-    onDecrease: any
-    onDelete: any
+    items: ICartItem[];
+    total: number;
+    onIncrease: (id: number) => void;
+    onDecrease: (id: number) => void;
+    onDelete: (id: number) => void;
 }
 
 const ShoppingCartTable: React.FC<ShoppingCartTableProps> = (props) => {
     const { items, total, onIncrease, onDecrease, onDelete } = props
 
-    const renderRow = (item: any, idx: number) => {
-        const { id, name, count, total } = item;
+    const renderRow = (item: ICartItem, idx: number) => {
+        const { id, title, count, total } = item;
         return (
             <tr key={id}>
                 <td>{idx + 1}</td>
-                <td>{name}</td>
+                <td>{title}</td>
                 <td>{count}</td>
                 <td>${total}</td>
                 <td>

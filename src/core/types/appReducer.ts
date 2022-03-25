@@ -8,7 +8,7 @@ interface IBook {
 
 interface ICartItem {
     id: number,
-    name: string,
+    title: string,
     count: number,
     total: number
 }

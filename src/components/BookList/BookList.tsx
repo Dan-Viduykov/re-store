@@ -17,18 +17,20 @@ interface BookListProps {
 
 const BookList: FC<BookListProps> = ({ books, onAddedToCart }) => {
     return (
-        <ul className="book-list">{
-            books?.map((book) => {
-                return (
-                    <li key={book.id}>
-                            <BookListItem
-                                book={book}
-                                onAddedToCart={() => onAddedToCart(book.id)}
-                            />
-                    </li>
-                )
-            })
-        }</ul>    
+        <ul className="book-list">
+            {
+                books?.map((book) => {
+                    return (
+                        <li key={book.id}>
+                                <BookListItem
+                                    book={book}
+                                    onAddedToCart={() => onAddedToCart(book.id)}
+                                />
+                        </li>
+                    )
+                })
+            }
+        </ul>    
     )
 } 
 
@@ -60,9 +62,7 @@ interface OwnProps {
     bookAddedToCart: (id: number) => any;
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<AppActions>, ownProps: OwnProps) => {
-    const { bookstoreService, bookAddedToCart } = ownProps;
-
+const mapDispatchToProps = (dispatch: Dispatch<AppActions>, { bookstoreService, bookAddedToCart }: OwnProps) => {
     return {
         fetchBooks: fetchBooks(bookstoreService, dispatch),
         onAddedToCart: (id: number) => dispatch(bookAddedToCart(id))

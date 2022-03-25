@@ -7,8 +7,7 @@ import App from "./components/App";
 import ErrorBoundary from "./components/ErrorBoundary";
 import BookstoreService from "./core/services/BookstoreService";
 import { BookstoreServiceProvider } from "./components/BookstoreServiceContext";
-
-import store from "./core/store/store";
+import { store } from "./core/store/store";
 
 const bookstoreService = new BookstoreService()
 
